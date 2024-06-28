@@ -1,0 +1,8 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        WELCOME TO MACHINE DATABASE!!!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PRESS 1 TO ADD A NEW MACHINE
+PRESS 2 TO UPDATE AN EXISTING MACHINE
+PRESS 3 TO GET A REGISTERED MACHINE BY ID
+PRESS 4 TO LIST ALL REGISTERED MACHINES
+ANY OTHER KEY IS TREATED AS EXIT....
