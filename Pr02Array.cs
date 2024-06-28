@@ -16,9 +16,10 @@ namespace SampleConApp
         static void Main(string[] args)
         {
             //SingleDimensionalArray();
-            //MultiDimensionalArray();
+            // MultiDimensionalArray();
+            Create2DArray();
             //JaggedArrayExample();
-            CreatingDynamicArray();
+            // CreatingDynamicArray();
             //todo: Clone, Copy, CopyTo. other than the normal = operator. 
         }
 
@@ -85,6 +86,23 @@ namespace SampleConApp
             for (int i = 0; i < TwoDArray.GetLength(0); i++) {
                 for (int j = 0; j < TwoDArray.GetLength(1); j++) {
                     Console.Write(TwoDArray[i, j] + ",");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Create2DArray() {
+            int rows = 3;
+            int cols = 5;
+            int[,] TwoDArray = new int[rows, cols];
+            for (int i = 0; i < TwoDArray.GetLength(0); i++) {
+                for (int j = 0; j < TwoDArray.GetLength(1); j++) {
+                    TwoDArray[i, j] = 2;
+                }
+            }
+            for (int i = 0; i < TwoDArray.GetLength(0); i++) {
+                for (int j = 0; j < TwoDArray.GetLength(1); j++) {
+                    Console.Write(TwoDArray[i, j] + " ");
                 }
                 Console.WriteLine();
             }
