@@ -38,6 +38,11 @@ class ExpenseCollection {
                 return;
 			}
 		}
+		foreach (var item in expenses) {
+			if (item.Id.Equals(id))
+				expenses.Remove(item);
+				return;
+		}
 		throw new Exception("Expense not found!");
     }
 
