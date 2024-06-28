@@ -24,8 +24,34 @@ namespace SampleConApp
 			Console.WriteLine("{0}'s age will be {1} after 15 years", name, age + 15);
 			
 		}
+
+		static void convertExample() {
+			int x = 32;
+			long y = x;
+			Console.WriteLine(y);
+			y = 2323333333292992;
+			try {
+				x = Convert.ToInt32(y);
+			}
+			catch (Exception ex) {
+				Console.WriteLine(ex.Message);
+			}
+			Console.WriteLine(x);
+			try {
+				checked {
+					x = (int) y;
+				}
+			}
+			catch (Exception ex) {
+				Console.WriteLine(ex.Message);
+			}
+			Console.WriteLine(x);
+
+		}
+
 		static void Main() {
-			inputDisplay();
+			// inputDisplay();
+			convertExample();
 		}
 	}
 }
