@@ -21,6 +21,14 @@ namespace SampleConApp
                 myConsole.WriteLine("Component is created");
             }
         }
+
+        class MiddlewareComponent2
+        {
+            public static void CreateComponent2()
+            {
+                MiddlewareComponent.CreateComponent();
+            }
+        }
     }
     class NamespaceExample
     {
@@ -34,7 +42,7 @@ namespace SampleConApp
 class Test {
     static void Main(string[] args)
         {
-            SampleConApp.Middleware.MiddlewareComponent.CreateComponent();
+            SampleConApp.Middleware.MiddlewareComponent2.CreateComponent2();
             SampleConApp.NamespaceExample.CreateComponentExample();
         }
 }

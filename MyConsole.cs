@@ -29,4 +29,11 @@ public class MyConsole {
         while(!DateTime.TryParse(Console.ReadLine(), out result));
         return result;
     }
+
+    public static void PrintErrorMessage(string question) {
+        Console.WriteLine("Error! " + question);
+    }
+    public static void PrintSuccessMessage(string question) {
+        Console.WriteLine("Success! " + question);
+    }
 }
