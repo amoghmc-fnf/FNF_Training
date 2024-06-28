@@ -32,16 +32,11 @@ class ExpenseCollection {
 	}
 
     public void RemoveExpense(int id) {
-        for (int i = 0; i < expenses.Count; i++) {
-			if (expenses[i].Id.Equals(id)) {
-                expenses.Remove(expenses[i]);
-                return;
-			}
-		}
 		foreach (var item in expenses) {
-			if (item.Id.Equals(id))
+			if (item.Id.Equals(id)) {
 				expenses.Remove(item);
 				return;
+			}
 		}
 		throw new Exception("Expense not found!");
     }
