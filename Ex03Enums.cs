@@ -15,9 +15,10 @@ namespace SampleConApp {
 			Console.Write("Enter your choice: ");
 			string selected = Console.ReadLine();
 			object SBAccount = AccountType.SBAccount;
+			Type SBAccountType = SBAccount.GetType();
 
 			// get type at runtime
-			object boxedAccountType = Enum.Parse(SBAccount.GetType(), selected, true);
+			object boxedAccountType = Enum.Parse(SBAccountType, selected, true);
 
 			// get type at compiletime
 			// object boxedAccountType = Enum.Parse(typeof(AccountType), selected, true);
