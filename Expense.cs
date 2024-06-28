@@ -8,7 +8,7 @@ class Expense {
     public DateTime Date { get; set; }
 
     public override string ToString() {
-        return string.Format("Id: {0}, Description: {1}, Amount: {2}, Date: {3}", Id, Description, Amount, Date);
+        return string.Format("Id: {0}, Description: {1}, Amount: {2}, Date: {3}", Id, Description, Amount, Date.ToString("dd/MMM/yyyy"));
     }
 }
 
