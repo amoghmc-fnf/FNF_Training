@@ -14,18 +14,25 @@ namespace SampleConApp {
 			}
 			Console.Write("Enter your choice: ");
 			string selected = Console.ReadLine();
-			object boxedAccountType = Enum.Parse(typeof(AccountType), selected, true);
+			AccountType SBAccount = AccountType.SBAccount;
+
+			// get type at runtime
+			object boxedAccountType = Enum.Parse(SBAccount.GetType(), selected, true);
+
+			// get type at compiletime
+			// object boxedAccountType = Enum.Parse(typeof(AccountType), selected, true);
 			AccountType acc = (AccountType) boxedAccountType;
 
 			Console.WriteLine("You have chosen {0}", acc);
 
 		}
 
+
         static void Main() {
             // AccountType acc = AccountType.SBAccount;
             // Console.WriteLine("The Account selected is " + acc);
             // Console.WriteLine("Internal value is " + (int) acc);
 			enumInputExample();
-        }
+        }	
     }
 }
