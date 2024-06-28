@@ -48,11 +48,12 @@ namespace SampleConApp {
             int id = MyConsole.GetInteger("Enter ID");
             string desc = MyConsole.GetString("Enter description");
             double amt = MyConsole.GetDouble("Enter amount");
+            DateTime dt = MyConsole.GetDateTime("Enter date MM/DD/YY");
             Expense exp = new Expense {
                 Id = id,
                 Description = desc,
                 Amount = amt,
-                Date = DateTime.Now
+                Date = dt
             };
             
             expCollection.AddExpense(exp);

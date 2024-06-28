@@ -6,7 +6,7 @@ public class MyConsole {
         return Console.ReadLine();
     }
     public static int GetInteger(string question) {
-        int result = 0;
+        int result;
         do {
             Console.WriteLine(question);
         } 
@@ -14,11 +14,19 @@ public class MyConsole {
         return result;
     }
     public static double GetDouble(string question) {
-        double result = 0;
+        double result;
         do {
             Console.WriteLine(question);
         } 
         while(!double.TryParse(Console.ReadLine(), out result));
+        return result;
+    }
+    public static DateTime GetDateTime(string question) {
+        DateTime result;
+        do {
+            Console.WriteLine(question);
+        } 
+        while(!DateTime.TryParse(Console.ReadLine(), out result));
         return result;
     }
 }

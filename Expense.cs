@@ -25,6 +25,7 @@ class ExpenseCollection {
 			if (expenses[i].Id.Equals(id)) {
 				expenses[i].Description = exp.Description;
 				expenses[i].Amount = exp.Amount;
+				expenses[i].Date = exp.Date;
 				return;
 			}
 		}
