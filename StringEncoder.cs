@@ -26,15 +26,17 @@ public class StringEncoder {
     }
 
     public string GetEncodedMessage(string message) {
-        string encoded = "";
-        var check = 0;
-        message = message.ToLower();
         if (message == (null)) {
             throw new NullReferenceException();
         }
         if (message.Equals("")) {
             throw new ArgumentException();
         }
+        
+        string encoded = "";
+        var check = 0;
+        message = message.ToLower();
+
         foreach (var item in message) {
             if (item.Equals(' ')) {
                 encoded += "-";

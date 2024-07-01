@@ -6,6 +6,13 @@ public static class DuplicateCounter {
     private const string duplicate = "duplicate";
 
     public static Dictionary<string, List<string>> GetDuplicateAndUnique(string message) {
+        if (message == (null)) {
+            throw new NullReferenceException();
+        }
+        if (message.Equals("")) {
+            throw new ArgumentException();
+        }
+        
         Dictionary<string, int> dupCountDict = new Dictionary<string, int>();
         message = message.ToLower();
         var curr = "";
@@ -17,11 +24,9 @@ public static class DuplicateCounter {
                 }
                 else if (dupCountDict.ContainsKey(curr)) {
                     dupCountDict[curr] += 1;
-                    // Console.WriteLine("{0} {1}", curr, dupCountDict[curr]);
                 }
                 else {
                     dupCountDict[curr] = 1;
-                    // Console.WriteLine("{0} {1}", curr, dupCountDict[curr]);
                 }
                 curr = "";
             }
@@ -44,11 +49,9 @@ public static class DuplicateCounter {
         foreach (var item in dupCountDict) {
             if (dupCountDict[item.Key] > 1) {
                 duplicateList.Add(item.Key);
-                // Console.WriteLine("{0} {1} {2}", item.Key, dupCountDict[item.Key], "Dup");
             }
             else {
                 uniqueList.Add(item.Key);
-                // Console.WriteLine("{0} {1} {2}", item.Key, dupCountDict[item.Key], "Uniq");
             }
         }
         Dictionary<string, List<string>> resultDict = new Dictionary<string, List<string>>();
