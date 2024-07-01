@@ -25,12 +25,11 @@ namespace SampleConApp
         private int id;
         private string name;
         private int salary;
-        private string designation;
 
-        public int EmployeeId
+        public int Id
         {
-            get { return id; }
-            set { id = value; }
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string EmployeeName 
@@ -43,6 +42,10 @@ namespace SampleConApp
         {
             get { return salary; }
             set { salary = value; }
+        }
+
+        public override string ToString() {
+            return string.Format("ID: {0}, Name: {1}, Salary: {2}", id, name, salary);
         }
     }
 
@@ -107,33 +110,31 @@ namespace SampleConApp
     {
         static void Main(string[] args)
         {
-            //int id = 123;
-            //string name = "Phaniraj";
-            //string designation = "Trainer";
-            //int salary = 45000;
+            int id = 123;
+            string name = "Phaniraj";
+            // string designation = "Trainer";
+            int salary = 45000;
 
-            //Employee employee = new Employee();
-            //employee.Id = id;
-            //employee.Name = name;
-            //employee.Designation = designation;
-            //employee.Salary = salary;
+            Employee_oldv employee = new Employee_oldv();
+            employee.Id = id;
+            employee.EmployeeName = name;
+            employee.EmployeeSalary = salary;
             
-            //Employee_oldv empOld  = new Employee_oldv();
-            //empOld.EmployeeId = 234;
+            Console.WriteLine(employee);
 
             /////////////Testing the Properties and Methods/////////
-            CustomerBill customerBill = new CustomerBill(); 
-            customerBill.CustomerId = 1; //Setting the Id. 
-            customerBill.AddProductDetail(346);
-            customerBill.AddProductDetail(146);
-            customerBill.AddProductDetail(346);
-            customerBill.AddProductDetail(346);
-            customerBill.AddProductDetail(346);
-            customerBill.AddProductDetail(300);
-            customerBill.AddProductDetail(300);
-            //Try to set the Final Billing Amount and See what happens!
-            MyConsole.PrintSuccessMessage("The Bill Date: " + customerBill.BillDate.ToLongDateString());
-            MyConsole.PrintSuccessMessage("The final Bill is " + customerBill.FinalBillAmount);
+            // CustomerBill customerBill = new CustomerBill(); 
+            // customerBill.CustomerId = 1; //Setting the Id. 
+            // customerBill.AddProductDetail(346);
+            // customerBill.AddProductDetail(146);
+            // customerBill.AddProductDetail(346);
+            // customerBill.AddProductDetail(346);
+            // customerBill.AddProductDetail(346);
+            // customerBill.AddProductDetail(300);
+            // customerBill.AddProductDetail(300);
+            // //Try to set the Final Billing Amount and See what happens!
+            // MyConsole.PrintSuccessMessage("The Bill Date: " + customerBill.BillDate.ToLongDateString());
+            // MyConsole.PrintSuccessMessage("The final Bill is " + customerBill.FinalBillAmount);
             ///////////////////////////////////////////////////
         }
     }
