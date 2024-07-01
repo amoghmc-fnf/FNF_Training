@@ -4,16 +4,40 @@ namespace SampleConApp {
     public class Ex12Delegates {
 
         delegate double Operation(double x, double y);
+        delegate void LogMessageDelegate(string message);
 
         static void PerformOperation(double x, double y, Operation method) {
             Console.WriteLine(method(x, y));
+        }
+
+        static void LogInfo(LogMessageDelegate method, string msg) {
+            method(msg);
         }
 
         static double addFunc(double x, double y) {
             return x + y;
         }
 
+        static void Hello(string message) {
+            Console.WriteLine("Hello " + message);
+        }
+
+        static void Bye(string message) {
+            Console.WriteLine("Bye " + message);
+        }
+
         static void Main() {
+            BasicFunctionalities();
+            MultiCastDelegates();
+        }
+
+        static void MultiCastDelegates() {
+            LogMessageDelegate logger = new LogMessageDelegate(Hello);
+            logger += Bye;
+            LogInfo(logger, "World!");
+        }
+
+        static void BasicFunctionalities() {
             // add func
             PerformOperation(13, 12, addFunc);
             
