@@ -3,11 +3,19 @@ using System;
 class Test {
     static void Main() {
         // 1st question
-        StringEncoderUnitTests();
+        // StringEncoderUnitTests();
         // StringEncoderUserTest();
 
         // 2nd question
-        // todo
+        var myDict = DuplicateCounter.GetDuplicateAndUnique("do not call me, let me call you");
+        
+        foreach(var item in myDict["unique"]) {
+            Console.WriteLine("{0}: {1}", item, "Unique");
+        }
+
+        foreach(var item in myDict["duplicate"]) {
+            Console.WriteLine("{0}: {1}", item, "Duplicate");
+        }
     }
 
     static void StringEncoderUserTest() {
