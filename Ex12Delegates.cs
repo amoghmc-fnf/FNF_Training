@@ -15,6 +15,7 @@ namespace SampleConApp {
         }
 
         static double addFunc(double x, double y) {
+            Console.WriteLine(x + y);
             return x + y;
         }
 
@@ -28,12 +29,14 @@ namespace SampleConApp {
 
         static void Main() {
             BasicFunctionalities();
-            MultiCastDelegates();
+            // MultiCastDelegates();
         }
 
         static void MultiCastDelegates() {
             LogMessageDelegate logger = new LogMessageDelegate(Hello);
             logger += Bye;
+            logger += Bye;
+            logger -= Bye;
             LogInfo(logger, "World!");
         }
 
@@ -54,6 +57,13 @@ namespace SampleConApp {
                 var interest = p * (r / 100) * 0.25;
                 return interest;
             });
+
+            // adding multiple functions to a delegate and calling them
+            Operation op = new Operation(addFunc);
+            op += (v1, v2) => v1 - v2;
+            op += (v1, v2) => v1 * v2;
+            op += (v1, v2) => v1 / v2;
+            PerformOperation(500.0, 300, op);
         }
     }
 }
