@@ -107,3 +107,23 @@ table {
     float: right;
     width: 45%;
 }
+
+.polaroid {
+    width: 50%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 lightpink;
+    margin-bottom: 25px;
+    float: left;
+    height: 175px;
+}
+
+.row {
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+}
+
+.mirror {
+    -webkit-box-reflect: top;
+    width: 20%;
+}

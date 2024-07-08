@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mainStyle.css"
+    <title>Document</title>
+</head>
+<body>
+    <h2>Using forms of HTML5</h2>
+    <article>
+        <h2>
+            Using HTML forms
+        </h2>
+        <p>Forms are used to take inputs from the user and process it to a storage location like a centralized database or a local storage where the content will be saved within the browser
+        <br/>
+        Forms are usually processed in the server side. If the app is using only client side scripting, then the form does not need the attributes called action and method.
+        </p>
+    </article>
+    <form>
+        <h1>Student Registration form</h1>
+        <hr>
+        <p><input type="text" placeholder="Name please!"/></p>
+        <p><input type="email" placeholder="Email please!"/></p>
+        <p><input type="date" placeholder="Date please!"/></p>
+        <p>
+            Select your qualification:
+            <select>
+                <option>Post Graduate</option>
+                <option>Under Graduate</option>
+                <option>High School</option>
+            </select>
+        </p>
+        <p>
+            Select your home city:
+            <datalist id="cities">
+                <option>Bangalore</option>
+                <option>Mysore</option>
+                <option>Delhi</option>
+                <option>Mumbai</option>
+                <option>Kolkata</option>
+                <option>Chennai</option>
+                <option>Pune</option>
+                <option>Hyderabad</option>
+                <option>Mangalore</option>
+                <option>Hubli</option>
+                <option>Coimbatore</option>
+                <option>Panaji</option>
+            </datalist>
+            <input list="cities" placeholder="City Name"/>
+        </p>
+        <p>
+            Select your gender
+            <input type="radio" name="rdGender" id="rdGender">Male
+            <input type="radio" name="rdGender" id="rdGender">Female
+            <input type="radio" name="rdGender" id="rdGender">Others
+        </p>
+        <p>
+            <input type="number" min="0" max="100000" placeholder="salary"/>
+        </p>
+        <p>
+            Rate yourself on HTML
+            <input type="range" min="1" max="10" step="1" value="50"/>
+        </p>
+        <input type="submit" value="Register"/>
+
+    </form>
+</body>
+</html>
