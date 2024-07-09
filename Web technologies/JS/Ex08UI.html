@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: aqua;
+            color: blue;
+            min-width: 200px;
+        }
+        button {
+            background-color: gray;
+            min-height: 50px;
+            min-width: 100px;
+            border-radius: 10px;
+            padding: 10px;
+            color: white;
+        }
+    </style>
+    <script src="Ex08Employee.js"></script>
+    <script>
+        function register() {
+            let id = document.getElementById('txtId').value;
+            let name = document.getElementById('txtName').value;
+            let address = document.getElementById('txtAddress').value;
+            let salary = document.getElementById('txtSalary').value;
+            let emp = new Employee(id, name, address, salary)
+            let json = JSON.stringify(emp)
+            document.querySelector("span").innerText = json
+            localStorage.setItem("emp", json)
+        }
+
+        window.addEventListener("load", function() {
+            let value = localStorage.getItem("emp")
+            if (value != null) {
+                emp = JSON.parse(value)
+                document.getElementById('txtId').value = emp.id
+                document.getElementById('txtName').value = emp.name
+                document.getElementById('txtAddress').value = emp.address
+                document.getElementById('txtSalary').value = emp.salary
+            }
+            let btn = document.querySelector("button")
+            btn.addEventListener("click", register)
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <h2>Employee Registration Form</h2>
+        <hr>
+        <p>
+            Enter the ID: <input type="number" id="txtId"/>
+        </p>
+        <p>
+            Enter the Name: <input type="text" id="txtName"/>
+        </p>
+        <p>
+            Enter the Address: <input type="text" id="txtAddress"/>
+        </p>
+        <p>
+            Enter the Salary: <input type="number" id="txtSalary"/>
+        </p>
+    </div>
+    <button>Register</button>
+    <span></span>
+
+</body>
+</html>
