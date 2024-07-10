@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        h1, ul {
+            text-align: center;
+        }
+        li {
+            display: inline-block;
+            padding: 5px;
+        }
+        nav {
+            padding: 5px;
+            background-color: lightgray;
+        }
+        section {
+            width: 45%;
+            padding: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+    </style>
+    <script src="Ex08Employee.js"></script>
+    <script>
+        let defaultTable;
+        function populateTable() {
+            const repo = new EmployeeRepo();
+            const data = repo.getAllEmployees();
+            document.querySelector("table").innerHTML = defaultTable
+            for (const emp of data) {
+                let row = `<tr>
+                            <td>${emp.id}</td>
+                            <td>${emp.name}</td>
+                            <td>${emp.address}</td>
+                            <td>${emp.salary}</td>
+                            <td>
+                                <a href="#">Edit</a>
+                            </td>
+                            </tr>`
+                document.querySelector("table").innerHTML += row;
+            }
+        }
+        function mapEvents() {
+            document.getElementById("aAll").addEventListener("click", () => {
+                hide(...document.querySelectorAll('section'))
+                show("secDisplay")
+                populateTable()
+            })
+            document.getElementById("aAdd").addEventListener("click", () => {
+                hide(...document.querySelectorAll('section'))
+                show("secAdd")
+            })
+            document.getElementById("aUpdate").addEventListener("click", () => {
+                hide(...document.querySelectorAll('section'))
+                show("secUpdate")
+            })
+            
+        }
+        window.addEventListener('load', function() {
+            defaultTable = document.querySelector("table").innerHTML
+            hide(...document.querySelectorAll('section'))
+            show('secDisplay')
+            mapEvents()
+        })
+    </script>
+</head>
+<body>
+    <h1>Employee Management System</h1>
+    <hr>
+    <nav>
+        <ul style="list-style-type: none;">
+            <li><a id="aAll" href="#">All employees</a></li>
+            <li><a id="aAdd" href="#">Add employee</a></li>
+            <li><a id="aUpdate" href="#">Update employee</a></li>
+        </ul>
+    </nav>
+    <section id="secDisplay">
+        <h2>All employees</h2>
+        <hr>
+        <table border="1">
+            <tr>
+                <th>EmpId</th>
+                <th>EmpName</th>
+                <th>EmpAddress</th>
+                <th>Options</th>
+            </tr>
+        </table>
+    </section>
+    <section id="secAdd">
+        <h2>Add new employees</h2>
+        <hr>
+    </section>
+    <section id="secUpdate">
+        <h2>Update employee</h2>
+        <hr>
+    </section>
+</body>
+</html>
