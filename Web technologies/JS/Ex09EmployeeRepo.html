@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management System</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
     <style>
         h1, ul {
             text-align: center;
@@ -26,8 +27,8 @@
     <script src="Ex08Employee.js"></script>
     <script>
         let defaultTable;
+        const repo = new EmployeeRepo();
         function populateTable() {
-            const repo = new EmployeeRepo();
             const data = repo.getAllEmployees();
             document.querySelector("table").innerHTML = defaultTable
             for (const emp of data) {
@@ -43,6 +44,17 @@
                 document.querySelector("table").innerHTML += row;
             }
         }
+        function onAddRecord() {
+            const id = document.getElementById("txtId").value;
+            const name = document.getElementById("txtName").value;
+            const address = document.getElementById("txtAddress").value;
+            const salary = document.getElementById("txtSalary").value;
+            const emp = new Employee(id, name, address, salary)
+            repo.addNewEmployee(emp)
+            hide(...document.querySelectorAll('section'))
+            alert("Employee added successfully!")
+        }
+
         function mapEvents() {
             document.getElementById("aAll").addEventListener("click", () => {
                 hide(...document.querySelectorAll('section'))
@@ -58,11 +70,11 @@
                 show("secUpdate")
             })
             
+            document.getElementById("btnAdd").addEventListener("click", onAddRecord);
         }
         window.addEventListener('load', function() {
             defaultTable = document.querySelector("table").innerHTML
             hide(...document.querySelectorAll('section'))
-            show('secDisplay')
             mapEvents()
         })
     </script>
@@ -70,7 +82,7 @@
 <body>
     <h1>Employee Management System</h1>
     <hr>
-    <nav>
+    <nav class="col">
         <ul style="list-style-type: none;">
             <li><a id="aAll" href="#">All employees</a></li>
             <li><a id="aAdd" href="#">Add employee</a></li>
@@ -92,6 +104,16 @@
     <section id="secAdd">
         <h2>Add new employees</h2>
         <hr>
+        <div>
+            <p>Enter Id: <input type="text" class="form-control" id="txtId"></p>
+            <p>Enter Name: <input type="text" class="form-control" id="txtName"></p>
+            <p>Enter Address: <input type="text" class="form-control" id="txtAddress"></p>
+            <p>Enter Salary: <input type="text" class="form-control" id="txtSalary"></p>
+            <p>
+                <button id="btnAdd" class="btn btn-success m-4">Add Employee</button>
+                <button id="btnCancel" class="btn btn-danger m-4">Cancel</button>
+            </p>
+        </div>
     </section>
     <section id="secUpdate">
         <h2>Update employee</h2>

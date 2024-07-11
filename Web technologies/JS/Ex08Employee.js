@@ -9,24 +9,46 @@ class Employee {
 }
 
 class EmployeeRepo {
-    data = [new Employee(1, "phaniraj", "bangalore", 56000),
-        new Employee(2, "ram", "mysore", 50000),
-        new Employee(3, "vinod", "bangalore", 76000),
-        new Employee(4, "shyam", "hyderabad", 45000),
-    ];
-
-    addNewEmployee = (emp) => [...this.data, emp]
-
-    deleteEmployee = (id) => {
-        let index = this.data.findIndex((e) => e.empId == id);
-        this.data.splice(index, 1)
+    data = [];
+    constructor() {
+        this.loadData()
     }
 
-    getAllEmployees = () => this.data
+    loadData = () => {
+        if (localStorage.getItem("empList") != null) {
+            const json = localStorage.getItem("empList")
+            this.data = JSON.parse(json)
+        }
+    }
+
+    saveData = () => {
+        const json = JSON.stringify(this.data)
+        localStorage.setItem("empList", json)
+    }
+
+    addNewEmployee = (emp) => {
+        this.loadData()
+        this.data.push(emp)
+        this.saveData()
+    }
+
+    deleteEmployee = (id) => {
+        this.loadData()
+        let index = this.data.findIndex((e) => e.empId == id);
+        this.data.splice(index, 1)
+        this.saveData()
+    }
+
+    getAllEmployees = () => {
+        this.loadData()
+        return this.data
+    }
 
     updateEmployee = (id, emp) => {
+        this.loadData()
         let index = this.data.findIndex((e) => e.empId == id)
         this.data.splice(index, 1, emp)
+        this.saveData()
     }
 }
 
