@@ -46,7 +46,9 @@ class EmployeeRepo {
 
     updateEmployee = (id, emp) => {
         this.loadData()
-        let index = this.data.findIndex((e) => e.empId == id)
+        let index = this.data.findIndex((e) => e.id == id)
+        if (index == -1)
+            throw "Employee not found!"
         this.data.splice(index, 1, emp)
         this.saveData()
     }

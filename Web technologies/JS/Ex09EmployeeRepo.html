@@ -28,8 +28,7 @@
     <script>
         let defaultTable;
         const repo = new EmployeeRepo();
-        function populateTable() {
-            const data = repo.getAllEmployees();
+        function populateTable(data) {
             document.querySelector("table").innerHTML = defaultTable
             for (const emp of data) {
                 let row = `<tr>
@@ -38,7 +37,7 @@
                             <td>${emp.address}</td>
                             <td>${emp.salary}</td>
                             <td>
-                                <a href="#">Edit</a>
+                                <a href="#" selectedId="${emp.id}" onclick="onEditClick(this)">Edit</a>
                             </td>
                             </tr>`
                 document.querySelector("table").innerHTML += row;
@@ -55,11 +54,42 @@
             alert("Employee added successfully!")
         }
 
+        function onUpdateRecord() {
+            const id = document.getElementById("txtUpdateId").value;
+            const name = document.getElementById("txtUpdateName").value;
+            const address = document.getElementById("txtUpdateAddress").value;
+            const salary = document.getElementById("txtUpdateSalary").value;
+            const emp = new Employee(id, name, address, salary)
+            repo.updateEmployee(id, emp)
+            hide(...document.querySelectorAll('section'))
+            alert("Employee updated successfully")
+        }
+
+        function onEditClick(ele) {
+            const id = ele.getAttribute('selectedId')
+            const foundRec = repo.getAllEmployees().find((emp) => emp.id == id)
+
+            // go to update section and edit
+            document.getElementById("txtUpdateId").value = foundRec.empId;
+            document.getElementById("txtUpdateName").value = foundRec.empName;
+            document.getElementById("txtUpdateAddress").value = foundRec.empAddress;
+            document.getElementById("txtUpdateSalary").value = foundRec.empSalary;
+            hide(...document.querySelectorAll('section'))
+            show('secUpdate')
+        }
+
+        function onTextChange() {
+            const searchText = document.getElementById('txtSearch').value
+            const records = repo.getAllEmployees()
+            const filtered = records.filter((emp) => emp.name.includes(searchText))
+            populateTable(filtered)
+        }
+
         function mapEvents() {
             document.getElementById("aAll").addEventListener("click", () => {
                 hide(...document.querySelectorAll('section'))
                 show("secDisplay")
-                populateTable()
+                populateTable(repo.getAllEmployees())
             })
             document.getElementById("aAdd").addEventListener("click", () => {
                 hide(...document.querySelectorAll('section'))
@@ -71,6 +101,7 @@
             })
             
             document.getElementById("btnAdd").addEventListener("click", onAddRecord);
+            document.getElementById("btnUpdate").addEventListener("click", onUpdateRecord);
         }
         window.addEventListener('load', function() {
             defaultTable = document.querySelector("table").innerHTML
@@ -92,7 +123,9 @@
     <section id="secDisplay">
         <h2>All employees</h2>
         <hr>
-        <table border="1">
+        <input class="form-control" id="txtSearch" type="search"
+        onchange="onTextChange()" placeholder="Search by name"/>
+        <table class="table table-striped table-bordered table-hover">
             <tr>
                 <th>EmpId</th>
                 <th>EmpName</th>
@@ -118,6 +151,16 @@
     <section id="secUpdate">
         <h2>Update employee</h2>
         <hr>
+        <div>
+            <p>Enter Id: <input type="text" class="form-control" id="txtUpdateId" disabled></p>
+            <p>Enter Name: <input type="text" class="form-control" id="txtUpdateName"></p>
+            <p>Enter Address: <input type="text" class="form-control" id="txtUpdateAddress"></p>
+            <p>Enter Salary: <input type="text" class="form-control" id="txtUpdateSalary"></p>
+            <p>
+                <button id="btnUpdate" class="btn btn-success m-4">Update Employee</button>
+                <button id="btnUpdateCancel" class="btn btn-danger m-4">Cancel</button>
+            </p>
+        </div>
     </section>
 </body>
 </html>
