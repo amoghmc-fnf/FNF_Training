@@ -1,1 +1,14 @@
-<script src="Ex07ClassesAndObjects.js"></script>
+<script src="Ex10DataStructures.js"></script>
+<script>
+    let data = setExample()
+    window.addEventListener("load", () => {
+        const ul = document.getElementById("lstItems")
+        for (const iterator of data.values())
+            ul.innerHTML += `${iterator}`
+    })
+</script>
+<body>
+    <ul id="lstItems">
+
+    </ul>
+</body>
