@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <script>
+        $(document).ready(function () {
+            $("button:first").click(() => alert("button was clicked"))
+            $("button:eq(1)").click(() => alert("2nd button was clicked"))
+            $("button:eq(2)").click(() => alert("3rd button was clicked"))
+            $("button:eq(2)").next().click(() => alert("4th button was clicked"))
+
+            $("div").click(function () {
+                $(this).css({ "color": "aqua" })
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Main Menu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+                aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">All Customers</a>
+                    <a class="nav-link" aria-current="page" href="#">Add Customer</a>
+                    <a class="nav-link" aria-current="page" href="#">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>List of customers with us</h2>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Customer Name</th>
+                            <th>Customer Address</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <section>
+                    <p>
+                        <input placeholder="CustomerId" class="form-control" id="cstId"/>
+                        <input placeholder="CustomerName" class="form-control" id="cstName"/>
+                        <input placeholder="CustomerAddress" class="form-control" id="cstAddress"/>
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
