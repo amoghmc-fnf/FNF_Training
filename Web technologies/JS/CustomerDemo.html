@@ -22,9 +22,13 @@
             }
             else {
                 repo.addCustomer(cst)
-
             }
+            $("input").val("")
             $("section").hide();
+        }
+
+        function onCancel() {
+            $("input").val("")
         }
 
         function populate(cst) {
@@ -37,6 +41,7 @@
             const found = repo.findCustomer(id)
             populate(found)
             $("section").hide();
+            $("#txtId").prop("disabled", true)
             $("section:eq(1)").show();
         }
 
@@ -69,16 +74,18 @@
             fillData(data);
         }
         $(document).ready(function(){
-           $("section").fadeOut();
-           $("#btnSaveChanges").click(onUpdate);
+            $("section").fadeOut();
+            $("#btnSaveChanges").click(onUpdate);
+            $("#btnCancelChanges").click(onCancel);
 
-           $(".navbar-nav > a:first").click(function(){
+            $(".navbar-nav > a:first").click(function () {
                 $("section").fadeOut();
                 $("section:eq(0)").fadeIn();
                 populateCustomers();
-           })
+            })
 
             $(".navbar-nav > a:eq(1)").click(function () {
+                $("#txtId").prop("disabled", false)
                 $("section").fadeOut();
                 $("section:eq(1)").fadeIn();
             })
@@ -136,7 +143,7 @@
                         </p>
                         <p>
                              <button id="btnSaveChanges" class="btn btn-info">Save Changes</button>   
-                             <button class="btn btn-danger">Cancel Changes</button>   
+                             <button id="btnCancelChanges" class="btn btn-danger">Cancel Changes</button>   
                         </p>
                     </section>
                </div>
