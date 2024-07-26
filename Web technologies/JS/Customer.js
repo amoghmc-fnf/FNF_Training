@@ -15,7 +15,7 @@ class CustomerRepo {
         this.customerList.push(new Customer(14, "Abraham", "Kochi"))
     }
 
-    getAllCustomers = () => this.customerList
+    getAll = () => this.customerList
 
     addCustomer(cst) {
         this.customerList.push(cst)

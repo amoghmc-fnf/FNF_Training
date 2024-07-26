@@ -8,14 +8,37 @@
     <script src="Customer.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script>
-        //3 ways: element, id, class
         const repo = new CustomerRepo();
+
+        function onUpdate() {
+            alert("test")
+            // const id = $("#txtId").val
+            // const name = $("#txtName").val
+            // const address = $("#txtAddress").val
+
+            // repo.updateCustomer(new Customer(id, name, address));
+            // $("section").hide();
+        }
+
+        function populate(cst) {
+            $("#txtId").val(cst.CustomerId)
+            $("#txtName").val(cst.CustomerName)
+            $("#txtAddress").val(cst.CustomerAddress)
+        }
+
+        function onEdit(id) {
+            const found = repo.findCustomer(id)
+            populate(found)
+            $("section").hide();
+            $("section:eq(1)").show();
+        }
+
         function createRow(customer){
             const row =`<tr>
                 <td>${customer.CustomerId}</td>
                 <td>${customer.CustomerName}</td>
                 <td>${customer.CustomerAddress}</td>
-                <td><a class='btn btn-primary'>Edit</a></td>
+                <td><a class='btn btn-primary'onclick="onEdit(${customer.CustomerId})">Edit</a></td>
             `;
             return row;
         }
@@ -41,6 +64,7 @@
            $(".navbar-nav > a:eq(1)").click(function(){
            $("section").fadeOut(2000);
             $("section:eq(1)").fadeIn(2000);
+            $("button:eq(1)").click(onUpdate)
            })
         });
     </script>
@@ -86,13 +110,13 @@
                    <section>
                         <h2>Register New Customer</h2>
                         <p>
-                            <input placeholder="Customer Id" class="form-control" id="cstId"/>
+                            <input placeholder="Customer Id" class="form-control" id="txtId" disabled="true"/>
                         </p>
                         <p>
-                            <input placeholder="Customer Name" class="form-control" id="cstName"/>
+                            <input placeholder="Customer Name" class="form-control" id="txtName"/>
                         </p>
                         <p>
-                            <input placeholder="Customer Address" class="form-control" id="cstAddress"/>
+                            <input placeholder="Customer Address" class="form-control" id="txtAddress"/>
                         </p>
                         <p>
                              <button class="btn btn-info">Save Changes</button>   
