@@ -41,6 +41,7 @@
             const found = repo.findCustomer(id)
             populate(found)
             $("section").hide();
+            $("#h2Edit").text("Edit Customer")
             $("#txtId").prop("disabled", true)
             $("section:eq(1)").show();
         }
@@ -85,6 +86,7 @@
             })
 
             $(".navbar-nav > a:eq(1)").click(function () {
+                $("#h2Edit").text("Register new customer")
                 $("#txtId").prop("disabled", false)
                 $("section").fadeOut();
                 $("section:eq(1)").fadeIn();
@@ -131,7 +133,7 @@
                </div>
                <div class="col-md-5">
                    <section>
-                        <h2>Register New Customer</h2>
+                        <h2 id="h2Edit">Register New Customer</h2>
                         <p>
                             <input placeholder="Customer Id" class="form-control" id="txtId" disabled="true"/>
                         </p>
