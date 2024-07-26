@@ -12,12 +12,17 @@
 
         function onUpdate() {
             alert("test")
-            // const id = $("#txtId").val
-            // const name = $("#txtName").val
-            // const address = $("#txtAddress").val
+            const id = $("#txtId").val()
+            const name = $("#txtName").val()
+            const address = $("#txtAddress").val()
+            const cst = new Customer(id, name, address)
 
-            // repo.updateCustomer(new Customer(id, name, address));
-            // $("section").hide();
+            const attr = $("#txtId").attr("disabled")
+            if (attr == "disabled")
+                repo.updateCustomer(cst)
+            else
+                repo.addCustomer(cst)
+            $("section").hide();
         }
 
         function populate(cst) {
@@ -54,17 +59,18 @@
             fillData(data);
         }
         $(document).ready(function(){
-           $("section").fadeOut(2000);
+           $("section").fadeOut();
            $(".navbar-nav > a:first").click(function(){
-           $("section").fadeOut(2000);
-            $("section:eq(0)").fadeIn(2000);
+           $("section").fadeOut();
+            $("section:eq(0)").fadeIn();
+            $("button:eq(1)").click(onUpdate);
             populateCustomers();
            })
 
            $(".navbar-nav > a:eq(1)").click(function(){
-           $("section").fadeOut(2000);
-            $("section:eq(1)").fadeIn(2000);
-            $("button:eq(1)").click(onUpdate)
+           $("section").fadeOut();
+            $("section:eq(1)").fadeIn();
+            
            })
         });
     </script>

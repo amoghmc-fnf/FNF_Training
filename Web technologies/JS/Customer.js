@@ -32,10 +32,10 @@ class CustomerRepo {
             if (item.CustomerId == cst.CustomerId) {
                 item.CustomerName = cst.CustomerName
                 item.CustomerAddress = cst.CustomerAddress
-                return true
+                return
             }
         }
-        return false
+        return
     }
 
     deleteCustomer(id) {
