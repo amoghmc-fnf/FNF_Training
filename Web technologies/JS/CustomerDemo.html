@@ -43,7 +43,7 @@
             return row;
         }
         function fillData(data){
-           // $("table tbody").clear();
+           $("table tbody tr").remove();
             $.each(data, (index, element)=>{
                 let row = createRow(element);
                 $("table tbody").append(row)
