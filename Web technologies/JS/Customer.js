@@ -39,12 +39,7 @@ class CustomerRepo {
     }
 
     deleteCustomer(id) {
-        let index = 0
-        for (const item of this.customerList) {
-            if (item.CustomerId == id)
-                break;
-            index++;
-        }
+        let index = this.customerList.findIndex((c) => c.CustomerId == id);
         this.customerList.splice(index, 1);
     }
 }
