@@ -11,17 +11,19 @@
         const repo = new CustomerRepo();
 
         function onUpdate() {
-            alert("test")
             const id = $("#txtId").val()
             const name = $("#txtName").val()
             const address = $("#txtAddress").val()
             const cst = new Customer(id, name, address)
 
             const attr = $("#txtId").attr("disabled")
-            if (attr == "disabled")
+            if (attr == "disabled") {
                 repo.updateCustomer(cst)
-            else
+            }
+            else {
                 repo.addCustomer(cst)
+
+            }
             $("section").hide();
         }
 
@@ -60,18 +62,18 @@
         }
         $(document).ready(function(){
            $("section").fadeOut();
+           $("#btnSaveChanges").click(onUpdate);
+
            $(".navbar-nav > a:first").click(function(){
-           $("section").fadeOut();
-            $("section:eq(0)").fadeIn();
-            $("button:eq(1)").click(onUpdate);
-            populateCustomers();
+                $("section").fadeOut();
+                $("section:eq(0)").fadeIn();
+                populateCustomers();
            })
 
-           $(".navbar-nav > a:eq(1)").click(function(){
-           $("section").fadeOut();
-            $("section:eq(1)").fadeIn();
-            
-           })
+            $(".navbar-nav > a:eq(1)").click(function () {
+                $("section").fadeOut();
+                $("section:eq(1)").fadeIn();
+            })
         });
     </script>
 </head>
@@ -125,7 +127,7 @@
                             <input placeholder="Customer Address" class="form-control" id="txtAddress"/>
                         </p>
                         <p>
-                             <button class="btn btn-info">Save Changes</button>   
+                             <button id="btnSaveChanges" class="btn btn-info">Save Changes</button>   
                              <button class="btn btn-danger">Cancel Changes</button>   
                         </p>
                     </section>
